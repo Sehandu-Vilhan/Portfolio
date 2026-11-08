@@ -98,7 +98,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   width: 90%;
-  max-width: 480px;
+  max-width: 75%;
+  height: 80%;
   padding: 24px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   transform: translateY(20px) scale(0.95);
@@ -173,7 +174,23 @@ body {
   border: none;
 }
 
+
+.popup-list li {
+  font-size: 1rem;
+  color: #e4e4e7;
+}
+
+.popup-h1 {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+
 .btn-emerald:hover {
   background: #34d399;
   color: #000;
+}
+.popup-h1{
+
+  color: #ffffff;
 }
