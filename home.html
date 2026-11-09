@@ -142,17 +142,20 @@
 
 
 
-  <!-- Horizontal Scrolling Card Container (Only project cards appear here) -->
+ 
   <div class="d-flex flex-row flex-nowrap overflow-auto gap-4 pb-3" id="projectsContainer">
-    <!-- Cards will render here dynamically -->
+    
   </div>
 </section>
 
-<!-- Admin Code Upload Modal -->
+
 <div id="adminModal" class="modal-backdrop-custom">
   <div class="modal-card" style="max-width: 600px; height: auto;">
     <div class="modal-card-header">
-      <h4 class="popup-h1 mb-0" id="modalHeaderTitle">Upload New Project & Code</h4>
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <h4 class="popup-h1 mb-0" id="modalHeaderTitle">Upload New Project & Code</h4>
+        <span class="badge bg-danger text-white px-2 py-1" style="font-size: 0.75rem; font-weight: 500;">This Upload mechanism built by AI</span>
+      </div>
       <button type="button" class="modal-close-btn" onclick="closeAdminModal()">&times;</button>
     </div>
     
@@ -186,7 +189,7 @@
   </div>
 </div>
 
-<!-- Code Viewer Modal (When visitors click 'View Code' on a card) -->
+
 <div id="codeViewerModal" class="modal-backdrop-custom">
   <div class="modal-card" style="max-width: 700px; height: 80%;">
     <div class="modal-card-header">
@@ -201,10 +204,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
     
 
