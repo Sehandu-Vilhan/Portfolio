@@ -113,12 +113,94 @@
     <a href=""><button class="btn">📄 View Resume </button></a>
   </p>
 
+  <!-- Projects Section (Horizontal Scrolling Row) -->
+<section class="py-5 ps-4">
+  <h2 class="popup-h1 mb-4" style="font-family: 'Oswald', sans-serif;">Projects & Code Repository</h2>
+  
+<center>
+
+<div class="bubble-menu-container" id="bubbleMenu">
+  
+  
+  <button class="main-launcher-btn" id="launcherBtn">
+    <span>+</span>
+  </button>
+
+  <div class="bubbles-popup">
+    <a href="#" class="bubble-item" style="--x: -80px; --y: -70px;" onclick="uploadCode('Java')">Java</a>
+    <a href="#" class="bubble-item" style="--x: 70px; --y: -85px;" onclick="uploadCode('JS')">JS</a>
+    <a href="#" class="bubble-item" style="--x: -100px; --y: 20px;" onclick="uploadCode('HTML')">HTML</a>
+    <a href="#" class="bubble-item" style="--x: 90px; --y: 30px;" onclick="uploadCode('CSS')">CSS</a>
+  </div>
+
+</div>
+
+
+</center>
 
 
 
 
 
+  <!-- Horizontal Scrolling Card Container (Only project cards appear here) -->
+  <div class="d-flex flex-row flex-nowrap overflow-auto gap-4 pb-3" id="projectsContainer">
+    <!-- Cards will render here dynamically -->
+  </div>
+</section>
 
+<!-- Admin Code Upload Modal -->
+<div id="adminModal" class="modal-backdrop-custom">
+  <div class="modal-card" style="max-width: 600px; height: auto;">
+    <div class="modal-card-header">
+      <h4 class="popup-h1 mb-0" id="modalHeaderTitle">Upload New Project & Code</h4>
+      <button type="button" class="modal-close-btn" onclick="closeAdminModal()">&times;</button>
+    </div>
+    
+    <div class="modal-card-body">
+      <div class="mb-3">
+        <label class="form-label text-white">Project Title / Name</label>
+        <input type="text" id="projTitle" class="form-control bg-dark text-white border-secondary" placeholder="e.g., Java Swing Student System">
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label text-white">Project Image (Image Link URL or File Upload)</label>
+        <input type="text" id="projImage" class="form-control bg-dark text-white border-secondary mb-2" placeholder="Paste Image URL here (e.g., images/project.png)">
+        <input type="file" id="projImageFile" class="form-control form-control-sm bg-dark text-white border-secondary" accept="image/*" onchange="handleImageUpload(event)">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label text-white">Short Description</label>
+        <textarea id="projDesc" class="form-control bg-dark text-white border-secondary" rows="2" placeholder="Brief summary of what this project does..."></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label text-white">Source Code</label>
+        <textarea id="projCode" class="form-control bg-dark text-white border-secondary font-monospace" rows="6" placeholder="Paste your Java, JS, HTML, or CSS code here..."></textarea>
+      </div>
+    </div>
+
+    <div class="modal-card-footer">
+      <button type="button" class="btn btn-outline-secondary rounded-pill px-3" onclick="closeAdminModal()">Cancel</button>
+      <button type="button" class="btn btn-101 rounded-pill px-4" onclick="saveNewProject()">Save & Store Code</button>
+    </div>
+  </div>
+</div>
+
+<!-- Code Viewer Modal (When visitors click 'View Code' on a card) -->
+<div id="codeViewerModal" class="modal-backdrop-custom">
+  <div class="modal-card" style="max-width: 700px; height: 80%;">
+    <div class="modal-card-header">
+      <h4 class="popup-h1 mb-0" id="viewerTitle">Source Code</h4>
+      <button type="button" class="modal-close-btn" onclick="closeCodeViewer()">&times;</button>
+    </div>
+    <div class="modal-card-body h-75 overflow-auto">
+      <pre class="text-light bg-black p-3 rounded border border-secondary font-monospace" id="viewerCodeContent" style="white-space: pre-wrap;"></pre>
+    </div>
+    <div class="modal-card-footer">
+      <button type="button" class="btn btn-outline-secondary rounded-pill px-3" onclick="closeCodeViewer()">Close</button>
+    </div>
+  </div>
+</div>
 
 
 
