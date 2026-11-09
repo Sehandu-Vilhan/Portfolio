@@ -254,3 +254,20 @@ body {
   margin-left: 80px;
   font-size: 20px;
 }
+
+.typing-cursor {
+  color: #ffffff;
+  animation: blinkCursor 0.8s infinite;
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff; /* Ensures your text is crisp white on top of the black background */
+}
