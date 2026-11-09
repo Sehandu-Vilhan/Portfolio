@@ -1,5 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 
 body {
@@ -7,9 +7,17 @@ body {
 }
 
 .hero_for_name {
- 
     padding-left: 80px;
-    
+}
+
+/* Custom Oswald Name Style */
+.oswald-name {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 60px;
+  line-height: 1.1;
 }
 
 /* Custom Pill / Sausage Status Button Styles */
@@ -69,9 +77,6 @@ body {
     opacity: 0;
   }
 }
-
-
-
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     /* Modal Overlay Background */
@@ -174,7 +179,6 @@ body {
   border: none;
 }
 
-
 .popup-list li {
   font-size: 1rem;
   color: #e4e4e7;
@@ -188,7 +192,7 @@ body {
 /* target the icon inside the link across all link states */
 .github-icon-link,
 .github-icon-link:visited {
-  color: #ffffff; /* Sets icon to clean white (or use #a1a1aa for muted gray) */
+  color: #ffffff;
   font-size: 32px;
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -197,7 +201,7 @@ body {
 
 /* Hover effect */
 .github-icon-link:hover {
-  color: #10b981; /* Emerald green highlight on hover */
+  color: #10b981;
   transform: translateY(-2px);
 }
 
@@ -205,12 +209,6 @@ body {
   background: #34d399;
   color: #000;
 }
-.popup-h1{
-
-  color: #ffffff;
-}
-
-
 
 .btn-101 {
     padding: 13px 23px;
@@ -255,6 +253,4 @@ body {
 .pclass {
   margin-left: 80px;
   font-size: 20px;
-
 }
-
