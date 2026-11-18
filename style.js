@@ -200,6 +200,14 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
 });
 
+// Helper to check if a project is one of the permanent defaults
+function isDefaultProject(proj) {
+  return proj.id === "water-level-observer-java" || 
+         proj.id === "defense-system-java" || 
+         proj.title === "Water Level Observer (Java Swing & Console)" || 
+         proj.title === "Defense System (Java Swing)";
+}
+
 function renderProjects() {
   const container = document.getElementById("projectsContainer");
   if (!container) return;
@@ -211,6 +219,9 @@ function renderProjects() {
     // NEW: Run button only for cards that have a jar
     const runButton = proj.jar
       ? `<button class="btn btn-sm btn-101 rounded-pill w-100 mb-2" onclick="runProject(${index})">▶ Run Program</button>`
+      : "";
+    const deleteButton = !isDefaultProject(proj)
+      ? `<button class="btn btn-sm btn-outline-danger rounded-pill w-100 mt-2" onclick="deleteProject(${index})">🗑️ Delete Project</button>`
       : "";
     const cardHTML = `
       <div class="card bg-dark border-secondary text-white flex-shrink-0 d-flex flex-column justify-content-between" style="width: 280px; min-height: 320px;">
@@ -224,6 +235,7 @@ function renderProjects() {
         <div class="card-footer bg-transparent border-0 pb-3">
           ${runButton}
           <button class="btn btn-sm btn-outline-light rounded-pill w-100" onclick="viewProjectCode(${index})">📂 View Stored Code</button>
+          ${deleteButton}
         </div>
       </div>
     `;
@@ -275,7 +287,8 @@ function saveNewProject() {
     title,
     image: finalImage,
     description,
-    code
+    code,
+    isCustom: true
   });
 
   localStorage.setItem("portfolio_projects", JSON.stringify(myProjects));
@@ -288,6 +301,32 @@ function saveNewProject() {
   document.getElementById("projCode").value = "";
   uploadedImageBase64 = "";
   closeAdminModal();
+}
+
+function deleteProject(index) {
+  const pwd = prompt("Enter Admin Password to Delete:");
+  if (pwd === "123") {
+    if (!isDefaultProject(myProjects[index])) {
+      myProjects.splice(index, 1);
+      localStorage.setItem("portfolio_projects", JSON.stringify(myProjects));
+      renderProjects();
+    } else {
+      alert("Default projects cannot be deleted!");
+    }
+  } else if (pwd !== null) {
+    alert("Incorrect Password!");
+  }
+}
+
+function deleteAllCustomProjects() {
+  const pwd = prompt("Enter Admin Password to delete added projects:");
+  if (pwd === "123") {
+    myProjects = myProjects.filter(p => isDefaultProject(p));
+    localStorage.setItem("portfolio_projects", JSON.stringify(myProjects));
+    renderProjects();
+  } else if (pwd !== null) {
+    alert("Incorrect Password!");
+  }
 }
 
 // CHANGED: loads the .java files from the "projects" folder, or shows saved code for uploaded cards
@@ -334,7 +373,8 @@ function addProjectCard({ title, image = "", description = "", code = "", files 
     code,
     files,
     jar,
-    mainClass
+    mainClass,
+    isCustom: true
   });
   localStorage.setItem("portfolio_projects", JSON.stringify(myProjects));
   renderProjects();
@@ -368,4 +408,23 @@ async function runJavaProject(jarPath, mainClass, title) {
 
 function closeJavaRunner() {
   document.getElementById("javaRunModal").classList.remove("active");
+}
+
+
+function deleteAllCustomProjects() {
+  const pwd = prompt("Enter Admin Password to delete added projects:");
+  if (pwd === "123") {
+    // Keeps only default built-in projects, clears user-added ones
+    myProjects = myProjects.filter(p => 
+      p.id === "water-level-observer-java" || 
+      p.id === "defense-system-java" || 
+      p.title === "Water Level Observer (Java Swing & Console)" || 
+      p.title === "Defense System (Java Swing)"
+    );
+    localStorage.setItem("portfolio_projects", JSON.stringify(myProjects));
+    renderProjects();
+    alert("User-added projects deleted successfully!");
+  } else if (pwd !== null) {
+    alert("Incorrect Password!");
+  }
 }
