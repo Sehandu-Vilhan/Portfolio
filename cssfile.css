@@ -1,12 +1,4 @@
 /* 
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
-      Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI
       Admin Password: 123      Upload method / functions  in Upload Java Project & Code 90% built by AI */
 
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
@@ -30,6 +22,7 @@ body {
   font-style: normal;
   font-size: 60px;
   line-height: 1.1;
+  color: #ffffff !important;
 }
 
 /* Custom Pill / Sausage Status Button Styles */
@@ -362,10 +355,10 @@ body {
   pointer-events: auto;
 }
 
-/* Animated Delete Button Styles */
+/* Fixed Animated Delete Button (Balanced spacing for "Delete") */
 .noselect {
-  width: 150px;
-  height: 50px;
+  width: 130px;
+  height: 45px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -375,6 +368,7 @@ body {
   box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
   position: relative;
   overflow: hidden;
+  /* Removed margin-right: auto so it doesn't force full-width spacing */
 }
 
 .noselect, .noselect span {
@@ -382,16 +376,17 @@ body {
 }
 
 .noselect .text {
-  transform: translateX(35px);
+  transform: translateX(18px); /* Centers text nicely without extra gap */
   color: white;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .noselect .icon {
   position: absolute;
   border-left: 1px solid #c41b1b;
-  transform: translateX(110px);
-  height: 40px;
+  transform: translateX(90px);
+  height: 45px;
   width: 40px;
   display: flex;
   align-items: center;
@@ -412,7 +407,7 @@ body {
 }
 
 .noselect:hover .icon {
-  width: 150px;
+  width: 130px;
   border-left: none;
   transform: translateX(0);
 }
