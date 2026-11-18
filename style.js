@@ -100,21 +100,6 @@ const defaultProjects = [
   {
     id: "water-level-observer-java",
     title: "Water Level Observer (Java Swing & Console)",
-    image: "data:image/svg+xml;utf8," + encodeURIComponent(`
-      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140">
-        <rect width="300" height="140" fill="#080D16"/>
-        <rect x="14" y="16" width="16" height="108" rx="4" fill="#10233F" stroke="#1B3B60" stroke-width="2"/>
-        <rect x="17" y="45" width="10" height="76" rx="2" fill="#60CFFF"/>
-        <rect x="44" y="16" width="115" height="50" rx="6" fill="#10233F" stroke="#1B3B60" stroke-width="2"/>
-        <text x="101" y="45" fill="#D9F2FF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Water Level: 75%</text>
-        <rect x="169" y="16" width="117" height="50" rx="6" fill="#10233F" stroke="#1B3B60" stroke-width="2"/>
-        <text x="227" y="45" fill="#60CFFF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Alarm: ON</text>
-        <rect x="44" y="74" width="115" height="50" rx="6" fill="#10233F" stroke="#1B3B60" stroke-width="2"/>
-        <text x="101" y="103" fill="#D9F2FF" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Dam: Open</text>
-        <rect x="169" y="74" width="117" height="50" rx="6" fill="#10233F" stroke="#1B3B60" stroke-width="2"/>
-        <text x="227" y="103" fill="#FF9F43" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">SMS: Alert</text>
-      </svg>
-    `),
     description: "Complete Observer Pattern project featuring both the Java Swing GUI Dashboard and the Console simulation version.",
       files: [
       "projects/waterLevelObserver/Demo.java",
@@ -124,6 +109,76 @@ const defaultProjects = [
     mainClass: "Demo",
     code: ""
   }
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    id: "defense-system-java",
+    title: "Defense System (Java Swing)",
+    description: "Java Swing Defense System using the Observer pattern: a Main Controller commanding Helicopter, Tank and Submarine units.",
+    jar: "projects/DefenseSystem/DefenseSystem.jar",
+    mainClass: "PUT_MAIN_CLASS_HERE",
+    code: "Source code coming soon."
+  }
+
+
+
+
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+    //  addddddddddd   card  hereeeeeeeeeeeeeeeeeeeeee
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 ];
 
 // CHANGED: if the built-in card is already saved in localStorage, refresh it with the latest settings

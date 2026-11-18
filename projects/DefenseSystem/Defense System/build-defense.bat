@@ -31,7 +31,6 @@ if not defined JAR (
 echo Using JDK: %JAR%
 echo.
 
-:: Find the class that has main()
 echo Classes with a main method:
 findstr /s /m /c:"public static void main" *.java
 echo.
@@ -52,7 +51,6 @@ if not defined MAINCLASS (
 echo Main class: !MAINCLASS!
 echo.
 
-:: List every .java file (javac wants forward slashes in this list)
 if exist "%LIST%" del "%LIST%"
 for /r "%SRC%" %%f in (*.java) do (
   set "p=%%f"
@@ -67,7 +65,6 @@ echo Compiling all files together...
 "%JAVAC%" --release 8 -encoding UTF-8 -d "%BUILD%" "@%LIST%"
 if errorlevel 1 goto fail
 
-:: Copy images and other non-code files, if any
 robocopy "%SRC%" "%BUILD%" /E /XF *.java *.form >nul
 if errorlevel 8 goto fail
 
