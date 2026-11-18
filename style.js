@@ -224,7 +224,7 @@ function renderProjects() {
       ? `<button class="btn btn-sm btn-outline-danger rounded-pill w-100 mt-2" onclick="deleteProject(${index})">🗑️ Delete Project</button>`
       : "";
     const cardHTML = `
-      <div class="card bg-dark border-secondary text-white flex-shrink-0 d-flex flex-column justify-content-between" style="width: 350px; min-height: 420px;">
+      <div class="card bg-dark border-secondary text-white flex-shrink-0 d-flex flex-column justify-content-between" style="width: 350px;          min-height: 420px;">
         <div>
           <img src="${cardImage}" class="card-img-top" alt="${proj.title}" style="height: 240px; object-fit: cover;">
           <div class="card-body">

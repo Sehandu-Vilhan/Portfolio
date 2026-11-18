@@ -425,3 +425,7 @@ body {
   transform: scale(0.8);
 }
 
+/* Center Project Cards */
+#projectsContainer {
+  justify-content: center !important;
+}
