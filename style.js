@@ -224,9 +224,9 @@ function renderProjects() {
       ? `<button class="btn btn-sm btn-outline-danger rounded-pill w-100 mt-2" onclick="deleteProject(${index})">🗑️ Delete Project</button>`
       : "";
     const cardHTML = `
-      <div class="card bg-dark border-secondary text-white flex-shrink-0 d-flex flex-column justify-content-between" style="width: 280px; min-height: 320px;">
+      <div class="card bg-dark border-secondary text-white flex-shrink-0 d-flex flex-column justify-content-between" style="width: 350px; min-height: 420px;">
         <div>
-          <img src="${cardImage}" class="card-img-top" alt="${proj.title}" style="height: 140px; object-fit: cover;">
+          <img src="${cardImage}" class="card-img-top" alt="${proj.title}" style="height: 240px; object-fit: cover;">
           <div class="card-body">
             <h5 class="card-title text-white fw-bold fs-6 mb-1">${proj.title}</h5>
             <p class="card-text text-muted small mb-0">${proj.description}</p>
@@ -415,6 +415,7 @@ function deleteAllCustomProjects() {
   const pwd = prompt("Enter Admin Password to delete added projects:");
   if (pwd === "123") {
     // Keeps only default built-in projects, clears user-added ones
+
     myProjects = myProjects.filter(p => 
       p.id === "water-level-observer-java" || 
       p.id === "defense-system-java" || 
