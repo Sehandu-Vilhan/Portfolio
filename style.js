@@ -429,3 +429,78 @@ function deleteAllCustomProjects() {
     alert("Incorrect Password!");
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById("timeSweepCounter");
+  if (!el) return;
+
+  const pad = (n) => String(Math.floor(n)).padStart(2, "0");
+  const formatHMS = (totalSec) => {
+    const sec = Math.max(0, Math.floor(totalSec));
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+    return `${pad(h)}:${pad(m)}:${pad(s)}`;
+  };
+
+  const getCurrentSeconds = () => {
+    const now = new Date();
+    return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+  };
+
+  let started = false;
+
+  const startSweepAndTick = () => {
+    if (started) return;
+    started = true;
+
+    const targetSec = getCurrentSeconds();
+    const duration = 1500;
+    const startTime = performance.now();
+
+    const sweep = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatHMS(targetSec * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(sweep);
+      } else {
+        el.textContent = formatHMS(getCurrentSeconds());
+        setInterval(() => {
+          el.textContent = formatHMS(getCurrentSeconds());
+        }, 1000);
+      }
+    };
+
+    requestAnimationFrame(sweep);
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startSweepAndTick();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+  } else {
+    startSweepAndTick();
+  }
+});

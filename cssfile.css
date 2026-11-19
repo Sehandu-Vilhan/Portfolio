@@ -429,3 +429,36 @@ body {
 ```[cite: 2]
 
 Save this over your `cssfile.css` and test it at 100% zoom on your laptop and PC[cite: 2].
+
+
+
+
+
+
+
+#timeSweepCounter {
+  font-family: "Oswald", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+#timeSweepCounter {
+  display: block;
+  width: fit-content;
+  margin-left: clamp(1.25rem, 5vw, 5rem);
+  font-family: "Karla", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  color: #10b981;
+  text-shadow: 0 0 24px rgba(16, 185, 129, 0.28);
+}
+
+
+
+
+
+
+
+
