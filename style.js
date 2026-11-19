@@ -439,68 +439,76 @@ function deleteAllCustomProjects() {
 
 
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const el = document.getElementById("timeSweepCounter");
   if (!el) return;
 
-  const pad = (n) => String(Math.floor(n)).padStart(2, "0");
-  const formatHMS = (totalSec) => {
-    const sec = Math.max(0, Math.floor(totalSec));
-    const h = Math.floor(sec / 3600);
-    const m = Math.floor((sec % 3600) / 60);
-    const s = sec % 60;
-    return `${pad(h)}:${pad(m)}:${pad(s)}`;
+  const boldDigits = ["𝟎", "𝟏", "𝟐", "𝟑", "𝟒", "𝟓", "𝟔", "𝟕", "𝟖", "𝟗"];
+  const toBold = (n) =>
+    String(Math.max(0, Math.floor(n)))
+      .padStart(2, "0")
+      .replace(/\d/g, (d) => boldDigits[Number(d)]);
+
+  const formatNow = (date) =>
+    `${toBold(date.getHours())}:${toBold(date.getMinutes())}:${toBold(date.getSeconds())}`;
+
+  let animFrame = null;
+  let tickTimer = null;
+  let wasVisible = false;
+
+  const stopClock = () => {
+    if (animFrame) cancelAnimationFrame(animFrame);
+    if (tickTimer) clearInterval(tickTimer);
+    animFrame = null;
+    tickTimer = null;
   };
 
-  const getCurrentSeconds = () => {
+  const playClock = () => {
+    stopClock();
     const now = new Date();
-    return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-  };
+    const targetSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+    const duration = 1200;
+    const start = performance.now();
 
-  let started = false;
+    const step = (ts) => {
+      const p = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const curSec = Math.floor(targetSec * eased);
 
-  const startSweepAndTick = () => {
-    if (started) return;
-    started = true;
+      const h = Math.floor(curSec / 3600);
+      const m = Math.floor((curSec % 3600) / 60);
+      const s = curSec % 60;
+      el.textContent = `${toBold(h)}:${toBold(m)}:${toBold(s)}`;
 
-    const targetSec = getCurrentSeconds();
-    const duration = 1500;
-    const startTime = performance.now();
-
-    const sweep = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = formatHMS(targetSec * eased);
-
-      if (progress < 1) {
-        requestAnimationFrame(sweep);
+      if (p < 1) {
+        animFrame = requestAnimationFrame(step);
       } else {
-        el.textContent = formatHMS(getCurrentSeconds());
-        setInterval(() => {
-          el.textContent = formatHMS(getCurrentSeconds());
+        el.textContent = formatNow(new Date());
+        tickTimer = setInterval(() => {
+          el.textContent = formatNow(new Date());
         }, 1000);
       }
     };
 
-    requestAnimationFrame(sweep);
+    el.textContent = "𝟎𝟎:𝟎𝟎:𝟎𝟎";
+    animFrame = requestAnimationFrame(step);
   };
 
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            startSweepAndTick();
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-  } else {
-    startSweepAndTick();
-  }
+  const checkScroll = () => {
+    const rect = el.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (inView && !wasVisible) {
+      wasVisible = true;
+      playClock();
+    } else if (!inView && wasVisible) {
+      wasVisible = false;
+      stopClock();
+      el.textContent = "𝟎𝟎:𝟎𝟎:𝟎𝟎";
+    }
+  };
+
+  window.addEventListener("scroll", checkScroll, { passive: true });
+  window.addEventListener("resize", checkScroll, { passive: true });
+  checkScroll();
 });

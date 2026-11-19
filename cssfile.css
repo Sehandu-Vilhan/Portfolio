@@ -373,6 +373,9 @@ body {
   /* Removed margin-right: auto so it doesn't force full-width spacing */
 }
 
+
+
+
 .noselect, .noselect span {
   transition: 200ms;
 }
@@ -425,40 +428,86 @@ body {
 /* Center Project Cards */
 #projectsContainer {
   justify-content: center !important;
+} 
+.noselect {
+  width: 8.125rem;
+  height: 2.8125rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: #e62222;  
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
-```[cite: 2]
 
-Save this over your `cssfile.css` and test it at 100% zoom on your laptop and PC[cite: 2].
+.noselect,
+.noselect span {
+  transition: 200ms;
+}
 
+.noselect .text {
+  transform: translateX(1.125rem);
+  color: white;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
 
+.noselect .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(5.625rem);
+  height: 2.8125rem;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.noselect svg {
+  width: 0.9375rem;
+  fill: #eee;
+}
 
+.noselect:hover {
+  background: #ff3636;
+}
 
+.noselect:hover .text {
+  color: transparent;
+}
 
+.noselect:hover .icon {
+  width: 8.125rem;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.noselect:focus {
+  outline: none;
+}
+
+.noselect:active .icon svg {
+  transform: scale(0.8);
+}
 
 #timeSweepCounter {
-  font-family: "Oswald", sans-serif;
-  font-variant-numeric: tabular-nums;
+  display: inline-block !important;
+  width: fit-content !important;
+  margin-left: clamp(1.25rem, 5vw, 5rem) !important;
+  font-family: "Oswald", sans-serif !important;
+  font-size: clamp(3rem, 6vw, 5.25rem) !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.05 !important;
+  background: linear-gradient(135deg, #050508 0%, #3b0764 40%, #1d4ed8 75%, #38bdf8 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 20px rgba(109, 40, 217, 0.55)) !important;
+  
 }
-
-#timeSweepCounter {
-  display: block;
-  width: fit-content;
-  margin-left: clamp(1.25rem, 5vw, 5rem);
-  font-family: "Karla", sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
-  line-height: 1.05;
-  color: #10b981;
-  text-shadow: 0 0 24px rgba(16, 185, 129, 0.28);
-}
-
-
-
-
-
-
-
-
