@@ -201,6 +201,13 @@ body {
   color: #ffffff;
 }
 
+.repo-heading {
+  font-weight: 700;
+  color: #000000 !important;
+  margin-left: clamp(1.25rem, 5vw, 5rem) !important;
+  text-align: left !important;
+}
+
 /* target the icon inside the link across all link states */
 .github-icon-link,
 .github-icon-link:visited {
@@ -426,14 +433,14 @@ body {
 }
 
 /* Center Project Cards */
-#projectsContainer {
+#projectsContainer {  
   justify-content: center !important;
 }
 
 #timeSweepCounter {
   display: block !important;
   width: fit-content !important;
-  margin-left: 0 !important;
+  margin-left: clamp(100rem, 5vw, 5rem) !important;
   margin-right: auto !important;
   margin-bottom: 0.35rem !important;
   text-align: left !important;
@@ -452,3 +459,8 @@ body {
           drop-shadow(0 0 14px rgba(109, 40, 217, 0.45)) !important;
           
 }
+
+
+/* 
+```[cite: 1] */
+
